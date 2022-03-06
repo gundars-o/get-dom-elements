@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Get HTML Elements | Example</title>
+	<style>
+		body {
+			margin: 0;
+			color: black;
+			text-align: center;
+			line-height: 45px;
+			letter-spacing: 3px;
+		  }
+		.header, .footer { height: 20vh }
+		.main { height: 60vh }
+	  </style>
+  </head>
+<body>
+	<div>
+		<div class="domHeader header">
+			HEADER
+		  </div>
+		<div class="domMain main">
+			MAIN
+		  </div>
+		<div class="domFooter footer">
+			FOOTER
+		  </div>
+	  </div>
+	<script >
+		'use strict';
+		( function getDOMElements() {
+			const allClassElements = document.querySelectorAll( '[class]' );
+			const allClassElementsLength = allClassElements.length;
+			for ( let i = 0; i < allClassElementsLength; i++ ) {
+				const item = allClassElements[ i ];
+				if ( item.classList[ 0 ].substring( 0, 3 ) === 'dom' ) {
+					if ( window[ item.classList[ 0 ] ] ) {
+						console.error( 'Class name is repeating: ' + item.classList[ 0 ] );
+					} else {
+						window[ item.classList[ 0 ] ] = item;
+					  }
+				  }
+			  }
+		  } )();
+		domHeader	.style.backgroundColor	= 'rgb(100,100,100)';
+		domMain		.style.backgroundColor	= 'rgb(125,125,125)';
+		domFooter	.style.backgroundColor	= 'rgb(100,100,100)';
+	  </script>
+  </body>
+</html>
